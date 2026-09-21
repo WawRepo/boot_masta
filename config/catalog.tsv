@@ -1,0 +1,34 @@
+# boot_masta image catalog
+# Tab separated. Lines starting with # are ignored.
+#
+# columns:
+#   id        short name, also the sub-folder name on the USB drive
+#   category  folder on the USB drive: linux | windows | diagnostics | rescue | security | misc
+#   mode      index  = scrape a directory listing, take the newest match
+#             github = newest release asset from a GitHub repo
+#             direct = one fixed URL
+#             manual = you must download it by hand (licence or no stable URL)
+#   source    directory URL (index) | owner/repo (github) | file URL (direct) | home page (manual)
+#   pattern   regex for the file name (index/github), "-" otherwise
+#   sums      checksum file name inside the same directory (index), URL (direct), or "-"
+#   enabled   yes | no   -> "no" is skipped by `make fetch`
+#   notes     free text
+#
+#id	category	mode	source	pattern	sums	enabled	notes
+ubuntu-desktop	linux	index	https://releases.ubuntu.com/24.04/	ubuntu-[0-9.]+-desktop-amd64\.iso	SHA256SUMS	yes	Ubuntu LTS: live session + installer. Supports Ventoy persistence.
+ubuntu-server	linux	index	https://releases.ubuntu.com/24.04/	ubuntu-[0-9.]+-live-server-amd64\.iso	SHA256SUMS	no	Server installer. Enable if you build servers.
+debian-netinst	linux	index	https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/	debian-[0-9.]+-amd64-netinst\.iso	SHA256SUMS	yes	Small Debian installer. Needs network during install.
+kali-live	security	index	https://cdimage.kali.org/current/	kali-linux-[0-9.]+[a-z]?-live-amd64\.iso	SHA256SUMS	yes	Kali live session. Supports Ventoy persistence.
+kali-installer	security	index	https://cdimage.kali.org/current/	kali-linux-[0-9.]+[a-z]?-installer-amd64\.iso	SHA256SUMS	no	Kali installer. Enable if you install Kali to a disk.
+arch	linux	index	https://mirror.rackspace.com/archlinux/iso/latest/	archlinux-[0-9.]+-x86_64\.iso	sha256sums.txt	no	Arch installer. Expert use.
+clonezilla	rescue	index	https://free.nchc.org.tw/clonezilla-live/stable/	clonezilla-live-[0-9.a-z-]+-amd64\.iso	-	yes	Disk and partition cloning.
+memtest86plus	diagnostics	index	https://www.memtest.org/	/download/v[0-9.]+/mt86plus_[0-9.]+_x86_64\.iso\.zip	-	yes	Memory test. UEFI and BIOS. Unpack the zip, keep the .iso.
+rescuezilla	rescue	github	rescuezilla/rescuezilla	rescuezilla-[0-9.]+-64bit\.[a-z]+\.iso	-	no	Clonezilla with a simple window interface.
+shredos	diagnostics	github	PartialVolume/shredos.x86_64	shredos-.*\.(iso|img)	-	no	Secure disk erase (nwipe). It DESTROYS data.
+systemrescue	rescue	manual	https://www.system-rescue.org/Download/	-	-	yes	Rescue toolkit: GParted, testdisk, ddrescue, memtest.
+gparted-live	rescue	manual	https://gparted.org/download.php	-	-	yes	Partition editor live disc.
+hirens-bootcd-pe	windows	manual	https://www.hirensbootcd.org/download/	-	-	yes	Windows PE rescue disc. Password reset, disk tools, drivers.
+windows-11	windows	manual	https://www.microsoft.com/software-download/windows11	-	-	yes	Windows 11 installer. Download it yourself. Your licence, your rules.
+supergrub2	rescue	manual	https://www.supergrubdisk.org/super-grub2-disk/	-	-	no	Boots a computer with a broken boot loader.
+tails	security	manual	https://tails.net/install/	-	-	no	Amnesic privacy system. Verify the signature.
+freedos	misc	manual	https://www.freedos.org/download/	-	-	no	DOS for old BIOS and firmware update tools.

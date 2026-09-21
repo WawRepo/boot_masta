@@ -1,0 +1,18 @@
+# Downloaded disk images - never commit these, they are huge.
+images/
+!images/.keep
+!images/MANUAL.md
+
+# Resolved download URLs and computed checksums (machine specific).
+.cache/
+*.tmp
+*.part
+
+# macOS noise
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Local hash record, machine specific.
+config/checksums.local.tsv
