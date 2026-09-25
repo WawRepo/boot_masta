@@ -12,8 +12,8 @@ Pick "Download Windows 11 Disk Image (ISO)". The file is about 6 GB.
 It is bigger than 4 GB, so the stick must be exFAT or NTFS. A Ventoy data
 partition is exFAT already, so this just works.
 
-Ventoy can skip the Windows 11 hardware check for you: at the boot menu
-press `F1`, or add the ISO to a `VTOY_WIN11_BYPASS_CHECK` entry.
+Ventoy skips the Windows 11 hardware check for you: `make sync` writes
+`VTOY_WIN11_BYPASS_CHECK` into the boot menu file.
 
 ## Hiren's BootCD PE  ->  `images/windows/`
 

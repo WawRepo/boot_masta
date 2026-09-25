@@ -15,7 +15,7 @@ help:
 	@echo "  make fetch-all                  - download every image, even the ones turned off"
 	@echo "  make fetch ID=ubuntu-desktop    - download just one"
 	@echo "  make verify                     - hash every file in images/ and watch for changes"
-	@echo "  make install-ventoy DEV=/dev/sdX- put Ventoy on the stick (Linux, ERASES the stick)"
+	@echo "  make install-ventoy DEV=/dev/sdX - put Ventoy on the stick (Linux, ERASES the stick)"
 	@echo "  make sync DEST=/Volumes/BOOTMASTA  - copy images to the stick and write the menu"
 	@echo "  make menu DEST=...              - rewrite only the boot menu"
 	@echo "  make persistence DEST=... ISO=... SIZE=8G - keep files between reboots (Linux)"

@@ -21,12 +21,19 @@ if [ -n "$big" ]; then
 fi
 
 need rsync
-opts=(-a --info=progress2 --human-readable --partial
+opts=(-a --human-readable --partial
       --exclude '.keep' --exclude '*.md' --exclude '.DS_Store' --exclude '*.part'
       --exclude '._*')
 # macOS writes a "._name" twin next to each file to hold Finder data. Ventoy
 # would list those twins in the boot menu, so do not make them.
 export COPYFILE_DISABLE=1
+# The rsync that ships with macOS (openrsync, or 2.6.9 on older systems) has
+# no --info option. Use the one-line progress bar only when rsync has it.
+if rsync --help 2>&1 | grep -q -- '--info'; then
+  opts+=(--info=progress2)
+else
+  opts+=(--progress)
+fi
 [ "${DELETE:-0}" = "1" ] && opts+=(--delete)
 
 log "copying images to $DEST"

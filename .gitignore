@@ -1,5 +1,5 @@
 # Downloaded disk images - never commit these, they are huge.
-images/
+images/*
 !images/.keep
 !images/MANUAL.md
 

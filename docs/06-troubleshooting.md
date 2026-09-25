@@ -22,8 +22,10 @@ Work down the list. Stop when it starts.
 
 ## An ISO starts, then freezes or shows a black screen
 
-- Press `F2` at the Ventoy menu and pick **grub2 mode** or **wimboot mode**.
-- Some ISOs need `Ventoy Compatible` mode. Press `F3`.
+- Put the cursor on the ISO and press `Enter`. A second menu opens. Pick
+  **Boot in grub2 mode** (Linux) or **Boot in wimboot mode** (Windows).
+  The keys `Ctrl+r` and `Ctrl+w` do the same from the main menu.
+- Some ISOs need **Compatible Mode**. Press `Ctrl+i` on the ISO, then `Enter`.
 - Re-download the ISO. Run `make verify`. A broken byte gives exactly this.
 
 ## "Secure Boot violation"
@@ -32,13 +34,16 @@ Turn Secure Boot off, or enrol Ventoy's key when it offers to at first boot.
 
 ## Windows 11 says the PC is not supported
 
-At the Ventoy menu press `F1` before you start the Windows ISO. That turns
-off the TPM and CPU check.
+`make sync` and `make menu` write `VTOY_WIN11_BYPASS_CHECK` into the boot
+menu file, so Ventoy skips the TPM and CPU check for you. If you wrote the
+menu some other way, press `F5` at the Ventoy menu, open
+**Temporary Control Settings** and turn on the Windows 11 bypass.
 
 ## Proxmox VE says it cannot find the installation media
 
-At the Ventoy menu put the cursor on the Proxmox ISO and press `F6`. That
-starts it in grub2 mode, which loads the ISO a different way. Normal mode
+At the Ventoy menu put the cursor on the Proxmox ISO and press `Enter`.
+In the second menu pick **Boot in grub2 mode** (or press `Ctrl+r` on the
+ISO). That starts it in grub2 mode, which loads the ISO a different way. Normal mode
 fails on some machines.
 
 ## Files bigger than 4 GB will not copy

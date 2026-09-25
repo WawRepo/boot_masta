@@ -32,4 +32,4 @@ windows-11	windows	manual	https://www.microsoft.com/software-download/windows11	
 supergrub2	rescue	manual	https://www.supergrubdisk.org/super-grub2-disk/	-	-	no	Boots a computer with a broken boot loader.
 tails	security	manual	https://tails.net/install/	-	-	no	Amnesic privacy system. Verify the signature.
 freedos	misc	manual	https://www.freedos.org/download/	-	-	no	DOS for old BIOS and firmware update tools.
-proxmox-ve	linux	index	https://enterprise.proxmox.com/iso/	proxmox-ve_[0-9.-]+\.iso	SHA256SUMS	yes	Proxmox VE installer: Debian plus KVM and LXC virtual machines. Boot it in grub2 mode (F6) if the installer cannot find the media.
+proxmox-ve	linux	index	https://enterprise.proxmox.com/iso/	proxmox-ve_[0-9.-]+\.iso	SHA256SUMS	yes	Proxmox VE installer: Debian plus KVM and LXC virtual machines. Boot it in grub2 mode (Ctrl+r) if the installer cannot find the media.

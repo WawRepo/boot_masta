@@ -55,7 +55,8 @@ images="$(cd "$DEST" && find . \
   printf '    { "VTOY_DEFAULT_MENU_MODE": "0" },\n'
   printf '    { "VTOY_TREE_VIEW_MENU_STYLE": "0" },\n'
   printf '    { "VTOY_FILE_FLT_VTOY": "1" },\n'
-  printf '    { "VTOY_SECONDARY_BOOT_MENU": "1" }\n'
+  printf '    { "VTOY_SECONDARY_BOOT_MENU": "1" },\n'
+  printf '    { "VTOY_WIN11_BYPASS_CHECK": "1" }\n'
   printf '  ],\n'
 
   printf '  "menu_alias": [\n'

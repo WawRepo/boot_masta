@@ -5,7 +5,8 @@
     { "VTOY_DEFAULT_MENU_MODE": "0" },
     { "VTOY_TREE_VIEW_MENU_STYLE": "0" },
     { "VTOY_FILE_FLT_VTOY": "1" },
-    { "VTOY_SECONDARY_BOOT_MENU": "1" }
+    { "VTOY_SECONDARY_BOOT_MENU": "1" },
+    { "VTOY_WIN11_BYPASS_CHECK": "1" }
   ],
   "menu_alias": [
     { "image": "/linux/ubuntu-24.04.5.1-desktop-amd64.iso", "alias": "Ubuntu Desktop - try it live or install it" },

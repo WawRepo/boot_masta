@@ -27,7 +27,7 @@ Ventoy has no macOS installer. Two ways that work:
 
 After the stick has Ventoy on it, everything else in this repo works on macOS:
   make fetch    # download the ISOs
-  make sync DEST=/Volumes/Ventoy
+  make sync DEST=/Volumes/BOOTMASTA
 TXT
 }
 
