@@ -16,10 +16,10 @@
 #
 #id	category	mode	source	pattern	sums	enabled	notes
 ubuntu-desktop	linux	index	https://releases.ubuntu.com/24.04/	ubuntu-[0-9.]+-desktop-amd64\.iso	SHA256SUMS	yes	Ubuntu LTS: live session + installer. Supports Ventoy persistence.
-ubuntu-server	linux	index	https://releases.ubuntu.com/24.04/	ubuntu-[0-9.]+-live-server-amd64\.iso	SHA256SUMS	no	Server installer. Enable if you build servers.
+ubuntu-server	linux	index	https://releases.ubuntu.com/24.04/	ubuntu-[0-9.]+-live-server-amd64\.iso	SHA256SUMS	yes	Server installer. Enable if you build servers.
 debian-netinst	linux	index	https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/	debian-[0-9.]+-amd64-netinst\.iso	SHA256SUMS	yes	Small Debian installer. Needs network during install.
-kali-live	security	index	https://cdimage.kali.org/current/	kali-linux-[0-9.]+[a-z]?-live-amd64\.iso	SHA256SUMS	yes	Kali live session. Supports Ventoy persistence.
-kali-installer	security	index	https://cdimage.kali.org/current/	kali-linux-[0-9.]+[a-z]?-installer-amd64\.iso	SHA256SUMS	no	Kali installer. Enable if you install Kali to a disk.
+kali-live	security	manual	https://www.kali.org/get-kali/	-	-	yes	Kali live session, with persistence. The mirrors carry only a .torrent for the live ISO now, so download it by hand from the "Live Boot" tile.
+kali-installer	security	index	https://cdimage.kali.org/current/	kali-linux-[0-9.]+[a-z]?-installer-amd64\.iso	SHA256SUMS	yes	Kali installer. Direct download works. Use this if the live ISO torrent is a bother.
 arch	linux	index	https://mirror.rackspace.com/archlinux/iso/latest/	archlinux-[0-9.]+-x86_64\.iso	sha256sums.txt	no	Arch installer. Expert use.
 clonezilla	rescue	index	https://free.nchc.org.tw/clonezilla-live/stable/	clonezilla-live-[0-9.a-z-]+-amd64\.iso	-	yes	Disk and partition cloning.
 memtest86plus	diagnostics	index	https://www.memtest.org/	/download/v[0-9.]+/mt86plus_[0-9.]+_x86_64\.iso\.zip	-	yes	Memory test. UEFI and BIOS. Unpack the zip, keep the .iso.
@@ -32,3 +32,4 @@ windows-11	windows	manual	https://www.microsoft.com/software-download/windows11	
 supergrub2	rescue	manual	https://www.supergrubdisk.org/super-grub2-disk/	-	-	no	Boots a computer with a broken boot loader.
 tails	security	manual	https://tails.net/install/	-	-	no	Amnesic privacy system. Verify the signature.
 freedos	misc	manual	https://www.freedos.org/download/	-	-	no	DOS for old BIOS and firmware update tools.
+proxmox-ve	linux	index	https://enterprise.proxmox.com/iso/	proxmox-ve_[0-9.-]+\.iso	SHA256SUMS	yes	Proxmox VE installer: Debian plus KVM and LXC virtual machines. Boot it in grub2 mode (F6) if the installer cannot find the media.

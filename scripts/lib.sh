@@ -64,11 +64,21 @@ url_origin() { printf '%s\n' "$1" | sed -E 's#^(https?://[^/]+).*#\1#'; }
 # Newest matching file in an Apache/nginx style directory listing.
 # $1 = directory URL, $2 = file name regex -> prints the file name
 resolve_index() {
-  local url="$1" pattern="$2"
-  curl -fsSL --retry 3 --max-time 60 "$url" \
-    | grep -oE "$pattern" \
-    | sort -uV \
-    | tail -n 1
+  local url="$1" pattern="$2" page cand best=""
+  page="$(curl -fsSL --retry 3 --max-time 60 "$url")" || return 0
+
+  # A listing also names files we do not want, for example "x.iso.torrent".
+  # The regex matches inside such a name, so keep only a candidate that the
+  # page links to on its own: href="x.iso" or >x.iso<. The list is sorted
+  # oldest first, so the last one that passes is the newest real file.
+  while IFS= read -r cand; do
+    [ -n "$cand" ] || continue
+    case "$page" in
+      *"href=\"$cand\""*|*"href='$cand'"*|*">$cand<"*) best="$cand" ;;
+    esac
+  done <<< "$(printf '%s\n' "$page" | grep -oE "$pattern" | sort -uV)"
+
+  [ -n "$best" ] && printf '%s\n' "$best"
 }
 
 # Newest release asset of a GitHub repo.

@@ -41,6 +41,15 @@ https://www.supergrubdisk.org/super-grub2-disk/
 
 Starts a computer whose boot loader is broken. Tiny, under 20 MB.
 
+## Kali Linux live  ->  `images/security/`
+
+https://www.kali.org/get-kali/
+
+Open the "Live Boot" tile and take `kali-linux-<version>-live-amd64.iso`.
+The mirrors publish only a `.torrent` for this file, so `make fetch` cannot
+take it. Any torrent program downloads it. The installer ISO needs no such
+work: `make fetch` gets it.
+
 ## Tails  ->  `images/security/`
 
 https://tails.net/install/

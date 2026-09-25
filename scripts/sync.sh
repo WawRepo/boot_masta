@@ -22,7 +22,11 @@ fi
 
 need rsync
 opts=(-a --info=progress2 --human-readable --partial
-      --exclude '.keep' --exclude '*.md' --exclude '.DS_Store' --exclude '*.part')
+      --exclude '.keep' --exclude '*.md' --exclude '.DS_Store' --exclude '*.part'
+      --exclude '._*')
+# macOS writes a "._name" twin next to each file to hold Finder data. Ventoy
+# would list those twins in the boot menu, so do not make them.
+export COPYFILE_DISABLE=1
 [ "${DELETE:-0}" = "1" ] && opts+=(--delete)
 
 log "copying images to $DEST"

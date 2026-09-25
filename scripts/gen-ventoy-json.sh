@@ -24,6 +24,7 @@ nice_name() {
     kali-*-live-*)           echo "Kali Linux - live session" ;;
     kali-*-installer-*)      echo "Kali Linux - installer" ;;
     archlinux-*)             echo "Arch Linux - installer (expert)" ;;
+    proxmox-ve_*)            echo "Proxmox VE - installer (virtual machine server)" ;;
     clonezilla-*)            echo "Clonezilla - clone and image disks" ;;
     mt86plus_*|memtest*)     echo "Memtest86+ - test the memory" ;;
     systemrescue*)           echo "SystemRescue - repair toolkit" ;;
@@ -37,8 +38,13 @@ nice_name() {
   esac
 }
 
-images="$(cd "$DEST" && find . -type f \( -iname '*.iso' -o -iname '*.img' -o -iname '*.vhd' -o -iname '*.vhdx' -o -iname '*.wim' \) \
-          ! -path './ventoy/*' ! -path './persistence/*' | sed 's|^\.||' | sort)"
+# macOS puts .Spotlight-V100 and .fseventsd on the drive and locks them, so
+# skip those folders. Without -prune, find stops with "Operation not permitted".
+images="$(cd "$DEST" && find . \
+            \( -name '.Spotlight-V100' -o -name '.fseventsd' -o -name '.Trashes' \
+               -o -path './ventoy' -o -path './persistence' \) -prune -o \
+            -type f ! -name '._*' \( -iname '*.iso' -o -iname '*.img' -o -iname '*.vhd' -o -iname '*.vhdx' -o -iname '*.wim' \) \
+            -print 2>/dev/null | sed 's|^\.||' | sort)"
 
 [ -n "$images" ] || warn "no images found under $DEST - the menu will be empty"
 

@@ -35,6 +35,12 @@ Turn Secure Boot off, or enrol Ventoy's key when it offers to at first boot.
 At the Ventoy menu press `F1` before you start the Windows ISO. That turns
 off the TPM and CPU check.
 
+## Proxmox VE says it cannot find the installation media
+
+At the Ventoy menu put the cursor on the Proxmox ISO and press `F6`. That
+starts it in grub2 mode, which loads the ISO a different way. Normal mode
+fails on some machines.
+
 ## Files bigger than 4 GB will not copy
 
 The partition is FAT32. A Ventoy data partition is exFAT and has no such
