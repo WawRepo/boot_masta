@@ -1,4 +1,4 @@
-# boot_masta
+<h1 align="center"><img src="assets/logo.png" alt="boot_masta" width="600"></h1>
 
 One USB stick. Many systems. Plug it in, start the computer, pick from a menu.
 
@@ -10,7 +10,7 @@ After that you only copy `.iso` files onto the stick. No re-flashing, ever.
 | Category | What it does |
 |---|---|
 | `diagnostics/` | Memtest86+ (tests the memory), ShredOS (erases a disk for good) |
-| `linux/` | Ubuntu Desktop, Debian, Arch - live sessions and installers |
+| `linux/` | Ubuntu Desktop, Debian, Arch, Proxmox VE - live sessions and installers |
 | `security/` | Kali Linux live and installer, Tails |
 | `rescue/` | SystemRescue, GParted Live, Clonezilla, Rescuezilla, Super Grub2 |
 | `windows/` | Windows 11 installer, Hiren's BootCD PE, a Windows-To-Go `.vhdx` |
@@ -48,6 +48,7 @@ Full steps: [docs/05-macos.md](docs/05-macos.md).
 | Install Windows | Boot the Windows 11 ISO. |
 | Run Windows from the stick | A `.vhdx` file plus vtoyboot. See [docs/03-windows-to-go.md](docs/03-windows-to-go.md). |
 | Install Kali | Boot the Kali installer ISO. |
+| Install Proxmox VE | Boot the Proxmox ISO. It ERASES the target disk. |
 | Run Kali from the stick | Boot the Kali live ISO. Persistence works the same way. |
 | Rescue a dead PC | SystemRescue, GParted, Clonezilla, Hiren's. |
 
@@ -64,6 +65,7 @@ config/catalog.tsv    what to download, and from where. Edit this.
 scripts/              one script per job. All of them print what they do.
 images/               the downloaded ISOs. Never committed.
 docs/                 the long answers.
+assets/               logo.png, icon.png, social-preview.png (GitHub link card).
 ```
 
 ## Docs
